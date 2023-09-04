@@ -106,5 +106,3 @@ Start the server
 
 - Use request validator
 - Create functional testing for api calls
-
-

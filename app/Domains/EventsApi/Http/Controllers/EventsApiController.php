@@ -26,10 +26,10 @@ class EventsApiController extends Controller
 
         $eventOverlapping = $eventsContoller->checkIfEventIsOverlapping($request->get('start_time'), $request->get('end_time'));
         if ($eventOverlapping == false) {
-            if($request->get('name') !== null && !empty($request->get('name'))
-                || $request->get('start_time') !== null && !empty($request->get('start_time'))
-                || $request->get('end_time') !== null && !empty($request->get('end_time'))
-                || $request->get('recurrence') !== null && !empty($request->get('recurrence'))
+            if($request->get('name') !== null && empty($request->get('name'))
+                || $request->get('start_time') !== null && empty($request->get('start_time'))
+                || $request->get('end_time') !== null && empty($request->get('end_time'))
+                || $request->get('recurrence') !== null && empty($request->get('recurrence'))
             ) {
                     throw new \Exception('Required parameters is missing');
             }
@@ -66,10 +66,10 @@ class EventsApiController extends Controller
             throw new \Exception('Event not found');
         }
         if (!$eventOverlapping && !empty($eventData[0])) {
-            if($request->get('name') !== null && !empty($request->get('name'))
-                || $request->get('start_time') !== null && !empty($request->get('start_time'))
-                || $request->get('end_time') !== null && !empty($request->get('end_time'))
-                || $request->get('recurrence') !== null && !empty($request->get('recurrence'))
+            if($request->get('name') == null && empty($request->get('name'))
+                || $request->get('start_time') == null && empty($request->get('start_time'))
+                || $request->get('end_time') == null && empty($request->get('end_time'))
+                || $request->get('recurrence') == null && empty($request->get('recurrence'))
             ) {
                 throw new \Exception('Required parameters is missing');
             }
