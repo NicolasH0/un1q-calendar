@@ -13,7 +13,7 @@ class CreateEventsTable extends Migration
 
             $table->string('name');
 
-            $table->text('description')->default('No description');
+            $table->text('description');
 
             $table->datetime('start_time');
 
